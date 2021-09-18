@@ -1,18 +1,19 @@
-import { Link } from "gatsby"
 import React from "react"
-import SetupTags from "../utils/SetupTags"
-
-const TagLists = ({ recipes }) => {
-  const newTags = SetupTags(recipes)
-  console.log(newTags)
+import setupTags from "../utils/setupTags"
+import { Link } from "gatsby"
+import slugify from "slugify"
+const TagsList = ({ recipes }) => {
+  const newTags = setupTags(recipes)
   return (
     <div className="tag-container">
       <h4>recipes</h4>
       <div className="tags-list">
         {newTags.map((tag, index) => {
           const [text, value] = tag
+          const slug = slugify(text, { lower: true })
+
           return (
-            <Link to={`/${text}`} key={index}>
+            <Link to={`/tags/${slug}`} key={index}>
               {text} ({value})
             </Link>
           )
@@ -22,4 +23,4 @@ const TagLists = ({ recipes }) => {
   )
 }
 
-export default TagLists
+export default TagsList
