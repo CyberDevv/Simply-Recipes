@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
       const tagSlug = slugify(tag, { lower: true })
       createPage({
         path: `/tags/${tagSlug}`,
-        component: path.resolve(`src/template/tag-template.jsx`),
+        component: path.resolve(`src/template/tag-template.js`),
         context: {
           tag: tag,
         },
